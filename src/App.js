@@ -20,7 +20,10 @@ class App extends Component {
   };
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // Adding the slice method makes a copy of the array - it's best practice
+    // const persons = this.state.persons.slice();
+    // More modern to use spread operator to add to new array
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   };
