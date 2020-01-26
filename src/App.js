@@ -11,7 +11,7 @@ import styled from 'styled-components';
 // import Radium, { StyleRoot } from 'radium';
 
 const StyledButton = styled.button`
-  background-color: green;
+  background-color: ${props => props.alt ? 'red' : 'green'};
   color: white;
   font: inherit;
   border: 1px solid blue;
@@ -19,7 +19,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   
   &:hover {
-    background-color: lightgreen;
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
     color: black;
   }
 `;
@@ -149,7 +149,7 @@ class App extends Component {
             // This is the sytnax to use a function and pass an argument
             // onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
             onClick={this.togglePersonsHandler}> */}
-          <StyledButton onClick={this.togglePersonsHandler}>
+          <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
             Toggle Persons
           </StyledButton>
           {/* </button> */}
