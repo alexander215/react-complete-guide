@@ -21,11 +21,17 @@ import classes from './Person.css';
 const person = (props) => {
     // Simple, undynamic way of doing things:
     // return <p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old!!</p>
-    const style = {
-        '@media (min-width: 500px)': {
-            width: '450px'
-        }
-    };
+    // const style = {
+    //     '@media (min-width: 500px)': {
+    //         width: '450px'
+    //     }
+    // };
+    const rnd = Math.random();
+    if (rnd > 0.7){
+        throw new Error('Something went wrong');
+
+    }
+
     return (
         // <div className="Person" style={style}>
         // <StyledDiv>
