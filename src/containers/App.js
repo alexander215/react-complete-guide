@@ -7,6 +7,8 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 // import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 // import styled from 'styled-components';
 // import Radium, { StyleRoot } from 'radium';
@@ -99,12 +101,14 @@ class App extends Component {
 
     let persons = null;
     // let btnClass = [classes.Button];
-    let btnClass = '';
 
     if (this.state.showPersons){
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
+      persons = <Persons 
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}/>
+          {/* Moved this code to Persons.js */}
+          {/* {this.state.persons.map((person, index) => {
             // return <ErrorBoundary key={person.id}>
             return <Person 
               click={() => this.deletePersonHandler(index)} 
@@ -113,7 +117,7 @@ class App extends Component {
               key={person.id}
               changed={(event) => this.nameChangedHandler(event, person.id)} />
               {/* </ErrorBoundary> */}
-          })}
+          {/* })} */}
           {/* The list before mapping: */}
           {/* <Person 
             name={this.state.persons[0].name} 
@@ -124,48 +128,32 @@ class App extends Component {
             click={this.switchNameHandler.bind(this, 'Max!')} 
             changed={this.nameChangedHandler}>My hobbies: Racing</Person>
           <Person name={this.state.persons[2].name} age={this.state.persons[2].age} /> */}
-        </div>
-      );
+      
       // style.backgroundColor = 'red';
       // style[':hover'] = {
       //   backgroundColor: 'salmon',
       //   color: 'black'
       // }
       // btnClass.push(classes.Red);
-      btnClass = classes.Red;
+      // btnClass = classes.Red;
     }
 
     // Dynamically add two class names as a variable:
     // const classes = ['red', 'bold'].join(' ');
 
     // const classes = [];
-    const assignedClasses = [];
-    if (this.state.persons.length <= 2){
-      // classes.push('red'); //classes = ['red']
-      assignedClasses.push(classes.red); //classes = ['red']
-    }
-    if (this.state.persons.length <= 1){
-      // classes.push('bold') // classes = ['red, 'bold']
-      assignedClasses.push(classes.bold) // classes = ['red, 'bold']
-    }
+
 
     return (
       // <StyleRoot> // This is for Radium
         <div className={classes.App}>
-          <h1>Hi, I'm a React App</h1>
-          <p className={assignedClasses.join(' ')}>This is really working!</p>
-          {/* <button 
-            style={style}
-            // This is the sytnax to use a function and pass an argument
-            // onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
-            onClick={this.togglePersonsHandler}> */}
-          {/* <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}> */}
-          {/* <button className="button" onClick={this.togglePersonsHandler}> */}
-          <button className={btnClass} onClick={this.togglePersonsHandler}>
-            Toggle Persons
-          </button>
+          
           {/* </StyledButton> */}
           {/* </button> */}
+          <Cockpit 
+          showPersons={this.state.showPersons}
+          persons={this.state.persons} 
+          clicked={this.togglePersonsHandler} />
           {persons}
         </div>
       // </StyleRoot>
