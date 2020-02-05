@@ -19,6 +19,7 @@ import classes from './Person.css';
 // `;
 
 const person = (props) => {
+    console.log('[Person.js] rendering...')
     // Simple, undynamic way of doing things:
     // return <p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old!!</p>
     // const style = {

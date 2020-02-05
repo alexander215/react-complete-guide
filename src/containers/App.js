@@ -28,6 +28,11 @@ import Cockpit from '../components/Cockpit/Cockpit';
 // `;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[app.js] constructor')
+  }
+
   state = {
     persons: [
       { id: 'ahrhwhdg', name: 'Max', age: 28 },
@@ -37,6 +42,16 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false
   };
+
+  static getDerivedStateFromProps(props, state){
+    console.log('[app.js] getDerivedStateFromProps', props);
+    return state;
+
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount')
+  }
 
   deletePersonHandler = (personIndex) => {
     // Adding the slice method makes a copy of the array - it's best practice
@@ -86,6 +101,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render')
     // const style = {
     //   backgroundColor: 'green',
     //   color: 'white',
