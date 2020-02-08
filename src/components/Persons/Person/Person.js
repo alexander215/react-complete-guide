@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Person.css';
 // import Radium from 'radium';
 // import styled from 'styled-components';
@@ -18,7 +18,9 @@ import classes from './Person.css';
 //     }
 // `;
 
-const person = (props) => {
+// const person = (props) => {
+class Person extends Component {
+    render() {
     console.log('[Person.js] rendering...')
     // Simple, undynamic way of doing things:
     // return <p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old!!</p>
@@ -39,9 +41,9 @@ const person = (props) => {
         // <div className="Person" style={style}>
         // <StyledDiv>
         <div className={classes.Person}>
-            <p onClick={props.click}>I'm {props.name} and I am {props.age} years old!!</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
+            <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!!</p>
+            <p>{this.props.children}</p>
+            <input type="text" onChange={this.props.changed} value={this.props.name} />
             {/* Below is the less dynamic way to do this before having a key */}
             {/* <input type="text" onChange={props.changed} value={props.name} /> */}
         </div>
@@ -49,6 +51,6 @@ const person = (props) => {
         // </div>
     )
 };
-
-export default person;
+}
+export default Person;
 // export default Radium(person);
