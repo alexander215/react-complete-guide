@@ -8,10 +8,21 @@ const cockpit = (props) => {
       setTimeout(() => {
         alert('Saved data to cloud!')
       }, 1000)
+      return () => {
+        console.log('[Cockpit.js] cleanup work in useEffect');
+      }
       // Adding additional parameters causes this only to run when those variables changes:
       // }, [props.persons]);
       // If you only want it to run once and never again, pass an empty array:
     }, []);
+
+    useEffect(() => {
+      console.log('[Cockpit.js] 2nd useEffect');
+      return () => {
+        console.log('[Cockpit.js] cleanup work in 2nd useEffect')
+      }
+    })
+
     const assignedClasses = [];
     let btnClass = '';
     if (props.showPersons){

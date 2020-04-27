@@ -40,7 +40,8 @@ class App extends Component {
       { id: 'fhfdshhw', name: 'Stephanie', age: 26 }
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   };
 
   static getDerivedStateFromProps(props, state){
@@ -172,14 +173,18 @@ class App extends Component {
     return (
       // <StyleRoot> // This is for Radium
         <div className={classes.App}>
+          <button onClick={() => {
+            this.setState({ showCockpit: false })
+          }}>Remove Cockpit</button>
           
           {/* </StyledButton> */}
           {/* </button> */}
-          <Cockpit 
+          {this.state.showCockpit ? <Cockpit 
           title={this.props.appTitle}
           showPersons={this.state.showPersons}
           persons={this.state.persons} 
-          clicked={this.togglePersonsHandler} />
+          clicked={this.togglePersonsHandler} /> :
+          null }
           {persons}
         </div>
       // </StyleRoot>
