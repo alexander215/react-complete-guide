@@ -4,7 +4,14 @@ import classes from './Cockpit.css';
 const cockpit = (props) => {
     useEffect(() => {
       console.log('[Cockpit.js] useEffect')
-    })
+      // Http request...
+      setTimeout(() => {
+        alert('Saved data to cloud!')
+      }, 1000)
+      // Adding additional parameters causes this only to run when those variables changes:
+      // }, [props.persons]);
+      // If you only want it to run once and never again, pass an empty array:
+    }, []);
     const assignedClasses = [];
     let btnClass = '';
     if (props.showPersons){
