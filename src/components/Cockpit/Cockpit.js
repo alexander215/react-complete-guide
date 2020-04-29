@@ -30,11 +30,11 @@ const cockpit = (props) => {
         btnClass = classes.Red;
     }
 
-    if (props.persons.length <= 2){
+    if (props.personsLength <= 2){
       // classes.push('red'); //classes = ['red']
       assignedClasses.push(classes.red); //classes = ['red']
     }
-    if (props.persons.length <= 1){
+    if (props.personsLength <= 1){
       // classes.push('bold') // classes = ['red, 'bold']
       assignedClasses.push(classes.bold) // classes = ['red, 'bold']
     }
@@ -59,4 +59,6 @@ const cockpit = (props) => {
     );
 };
 
-export default cockpit;
+// React.memo uses memoization - a technique where React will memoize (store) a snapshot of this component
+// and it will only re-render it if its input changes
+export default React.memo(cockpit);
