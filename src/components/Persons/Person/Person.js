@@ -37,19 +37,25 @@ class Person extends Component {
 
     // }
 
-    return (
+    return [
         // <div className="Person" style={style}>
         // <StyledDiv>
-        <div className={classes.Person}>
-            <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!!</p>
-            <p>{this.props.children}</p>
-            <input type="text" onChange={this.props.changed} value={this.props.name} />
-            {/* Below is the less dynamic way to do this before having a key */}
-            {/* <input type="text" onChange={props.changed} value={props.name} /> */}
-        </div>
+
+        // Temporarily remove this to see returning these JSX elements in an array:
+        // <div className={classes.Person}>
+        <p key="i1" onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!!</p>,
+        <p key="i2">{this.props.children}</p>,
+        <input  key="i3" type="text" onChange={this.props.changed} value={this.props.name} />
+        /* Below is the less dynamic way to do this before having a key */
+        /* <input type="text" onChange={props.changed} value={props.name} /> */
+        
+        
+        // Temporarily remove this to see returning these JSX elements in an array:
+        // </div>
+        
         // </StyledDiv>
         // </div>
-    )
+    ]
 };
 }
 export default Person;
